@@ -48,7 +48,7 @@ namespace Dinner
             this.textBoxD_description = new System.Windows.Forms.TextBox();
             this.labelD_description = new System.Windows.Forms.Label();
             this.groupBoxD_ingredientList = new System.Windows.Forms.GroupBox();
-            this.listBoxD_ingredients = new System.Windows.Forms.ListBox();
+            this.listViewD_ingredients = new System.Windows.Forms.ListView();
             this.labelD_ingredients = new System.Windows.Forms.Label();
             this.groupBoxD_dishList = new System.Windows.Forms.GroupBox();
             this.listBoxD_dish = new System.Windows.Forms.ListBox();
@@ -254,7 +254,7 @@ namespace Dinner
             // 
             // groupBoxD_ingredientList
             // 
-            this.groupBoxD_ingredientList.Controls.Add(this.listBoxD_ingredients);
+            this.groupBoxD_ingredientList.Controls.Add(this.listViewD_ingredients);
             this.groupBoxD_ingredientList.Controls.Add(this.labelD_ingredients);
             this.groupBoxD_ingredientList.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBoxD_ingredientList.Location = new System.Drawing.Point(203, 3);
@@ -263,14 +263,15 @@ namespace Dinner
             this.groupBoxD_ingredientList.TabIndex = 1;
             this.groupBoxD_ingredientList.TabStop = false;
             // 
-            // listBoxD_ingredients
+            // listViewD_ingredients
             // 
-            this.listBoxD_ingredients.FormattingEnabled = true;
-            this.listBoxD_ingredients.ItemHeight = 15;
-            this.listBoxD_ingredients.Location = new System.Drawing.Point(0, 42);
-            this.listBoxD_ingredients.Name = "listBoxD_ingredients";
-            this.listBoxD_ingredients.Size = new System.Drawing.Size(200, 364);
-            this.listBoxD_ingredients.TabIndex = 1;
+            this.listViewD_ingredients.HideSelection = false;
+            this.listViewD_ingredients.Location = new System.Drawing.Point(0, 42);
+            this.listViewD_ingredients.Name = "listViewD_ingredients";
+            this.listViewD_ingredients.Size = new System.Drawing.Size(200, 364);
+            this.listViewD_ingredients.TabIndex = 3;
+            this.listViewD_ingredients.UseCompatibleStateImageBehavior = false;
+            this.listViewD_ingredients.View = System.Windows.Forms.View.List;
             // 
             // labelD_ingredients
             // 
@@ -366,9 +367,9 @@ namespace Dinner
         private System.Windows.Forms.Label labelD_dish;
         public System.Windows.Forms.TextBox textBox_description;
         private System.Windows.Forms.TextBox textBoxD_description;
-        private System.Windows.Forms.ListBox listBoxD_ingredients;
         private System.Windows.Forms.PictureBox pictureBoxD_description;
         private System.Windows.Forms.PictureBox pictureBox_description;
+        private System.Windows.Forms.ListView listViewD_ingredients;
     }
 }
 

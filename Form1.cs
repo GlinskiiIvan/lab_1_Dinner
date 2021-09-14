@@ -25,7 +25,8 @@ namespace Dinner
 
             listIngredients = new List<string>() 
             {
-                "Картофель", "Мясо", "Яйца", "Лук", "Морковь", "Рис", "Соль", "Вода", "Чеснок", "Лапша", "Томатная паста", "Перец", "Мука", "Свекла"
+                "Картофель", "Мясо", "Яйца", "Лук", "Морковь", "Рис", "Соль", "Вода", "Чеснок", "Лапша", 
+                "Томатная паста", "Перец", "Мука", "Свекла", "Капуста", "Болгарский перец",
             };
 
             dishList = new Dictionary<string, List<string>>()
@@ -100,27 +101,32 @@ namespace Dinner
         {
             listBox_dish.Items.Clear();
             
-            List<string> tempDish = new List<string>();
-            foreach (var item in checkedListBox_ingredients.CheckedItems)
-            {
-                foreach (var element in dishList)
-                {
-                    if (element.Value.IndexOf(item.ToString()) != -1)
-                    {
-                        tempDish.Add(element.Key);
-                    }
+            List<string> tempDish = new List<string>();           
 
+            foreach (var element in dishList)
+            {
+                bool flag = true;
+                foreach(var item in checkedListBox_ingredients.CheckedItems)
+                {
+                    if (element.Value.IndexOf(item.ToString()) == -1)
+                    {
+                        flag = false;
+                    }
                 }
+                if (flag)
+                {
+                    tempDish.Add(element.Key);
+                }
+                
             }
 
             tempDish.Sort();
 
-            IEnumerable<string> distinctDish = tempDish.Distinct();
-
-            foreach (var item in distinctDish)
+            foreach (var item in tempDish)
             {
                 listBox_dish.Items.Add(item);
             }
+
             if (listBox_dish.SelectedIndex == -1)
             {
                 pictureBox_description.Image = null;
@@ -146,7 +152,7 @@ namespace Dinner
 
         private void listBoxD_dish_SelectedIndexChanged(object sender, EventArgs e)
         {
-            listBoxD_ingredients.Items.Clear();
+            listViewD_ingredients.Items.Clear();
             textBoxD_description.Text = "";
             pictureBoxD_description.Image = new Bitmap(Resources.borsh);
             foreach (var item in dishList)
@@ -154,8 +160,8 @@ namespace Dinner
                 if(listBoxD_dish.SelectedItem == item.Key)
                 {
                     foreach(var element in dishList[item.Key])
-                    {
-                        listBoxD_ingredients.Items.Add(element);
+                    {                        
+                        listViewD_ingredients.Items.Add(element);
                     }
                 }
             }
